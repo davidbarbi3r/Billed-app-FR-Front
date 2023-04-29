@@ -75,6 +75,7 @@ export default class {
     $('#arrow-icon1').click((e) => this.handleShowTickets(e, bills, 1))
     $('#arrow-icon2').click((e) => this.handleShowTickets(e, bills, 2))
     $('#arrow-icon3').click((e) => this.handleShowTickets(e, bills, 3))
+    this.addClickListenerToBills(bills)
     new Logout({ localStorage, onNavigate })
   }
 
@@ -145,12 +146,16 @@ export default class {
       this.counter ++
     }
 
-    bills.forEach(bill => {
-      $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
-    })
+    this.addClickListenerToBills(bills);
 
     return bills
 
+  }
+
+  addClickListenerToBills(bills){
+    bills.forEach(bill => {
+      $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
+    })
   }
 
   getBillsAllUsers = () => {
