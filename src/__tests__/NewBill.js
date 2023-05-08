@@ -10,14 +10,14 @@ import mockStore from "../__mocks__/store.js"
 import userEvent from '@testing-library/user-event';
 
 
-// Initialisation
-// On charge le dom avec le contenu du LocalStorage
+// Initialize the DOM
+// we mock the localStorage
 Object.defineProperty(window, 'localStorage', { value: localStorageMock })
-// On ajoute un utilisateur de type employee
+// we add the user type employee to localStorage 
 window.localStorage.setItem('user', JSON.stringify({
   type: 'Employee'
 }))
-// On défini une constante de navigation
+// we define a navigation function
 const onNavigate = jest.fn()
 window.alert = jest.fn()
 
